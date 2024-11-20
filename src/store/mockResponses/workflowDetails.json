@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "departmentName": "Legal",
+      "name": "John Doe",
+      "date": "2023-05-01",
+      "status": "completed",
+      "requestName": "Laptop Request",
+      "source": "1",
+      "target": "2"
+    },
+    {
+      "departmentName": "Security",
+      "name": "ABC Doe",
+      "date": "2023-06-01",
+      "status": "completed",
+      "requestName": "Laptop Request",
+      "source": "2",
+      "target": "3"
+    },
+    {
+      "departmentName": "Contract",
+      "name": "John Doe",
+      "date": "2023-05-01",
+      "status": "Ready for Approval",
+      "requestName": "Laptop Request",
+      "source": "2",
+      "target": "4"
+    },
+    {
+      "departmentName": "HR",
+      "name": "John Doe",
+      "date": "2023-05-01",
+      "status": "Pending",
+      "requestName": "Laptop Request",
+      "source": "3",
+      "target": "4"
+    },
+    {
+      "departmentName": "HR",
+      "name": "John Doe",
+      "date": "2023-05-01",
+      "status": "Pending",
+      "requestName": "Laptop Request",
+      "source": "4",
+      "target": "5"
+    }
+  ]
+}

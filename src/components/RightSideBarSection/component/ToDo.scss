@@ -1,0 +1,30 @@
+@use "../../../styles/global" as *;
+.todo__container {
+  width: calc(100% - 24px);
+  @include setFlexProperty(column, flex-start, flex-start, 10px);
+  box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px 12px;
+  p {
+    margin: 0;
+  }
+  .todo__title {
+    @include typography-m-bold();
+    @include setFlexProperty(row, center, center, 10px);
+    color: $secondary-color;
+    background: $light-blue;
+    width: 100%;
+    color: black;
+    width: max-content;
+    background-color: transparent;
+    text-transform: uppercase;
+  }
+
+  .todo__content {
+    width: 100%;
+    @include setFlexProperty(column, flex-start, flex-start, 10px);
+    .item {
+      @include setFlexProperty(row, flex-start, flex-start, 10px);
+      @include typography-s-normal();
+    }
+  }
+}

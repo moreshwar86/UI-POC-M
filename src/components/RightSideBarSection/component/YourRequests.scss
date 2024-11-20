@@ -1,0 +1,32 @@
+@use "../../../styles/global" as *;
+
+.your-requests__container {
+  width: calc(100% - 24px);
+  @include setFlexProperty(column, flex-start, flex-start, 10px);
+  box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px 12px;
+  p {
+    margin: 0;
+  }
+  .your-requests__title {
+    @include typography-m-bold();
+    @include setFlexProperty(row, center, center, 10px);
+    color: $secondary-color;
+    background: $light-blue;
+    width: 100%;
+    color: black;
+    width: max-content;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  .your-requests__content {
+    width: 100%;
+    @include setFlexProperty(column, flex-start, flex-start, 10px);
+    .item {
+      @include typography-s-normal();
+      color: $primary-color;
+    }
+  }
+}

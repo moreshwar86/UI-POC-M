@@ -1,0 +1,23 @@
+@use "../../../styles/global" as *;
+
+.request-details-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  @include setFlexProperty(column, center, center, 15px);
+
+  .form-section {
+    &__title {
+      @include typography-l-normal();
+      @include setFlexProperty(row, center, center, 10px);
+    }
+
+    &__content {
+      @include setFlexProperty(row, center, center, 15px);
+    }
+
+    &__footer {
+      @include setFlexProperty(row, center, center, 10px);
+    }
+  }
+}
