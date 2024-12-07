@@ -3,6 +3,7 @@ import Input from "../../../FormFields/Input/Input";
 import Datepicker from "../../../FormFields/Datepicker/Datepicker";
 import Button from "../../../FormFields/Button/Button";
 import "./RequestDetailsForm.scss";
+import moment from "moment";
 
 interface RequestDetailsFormProps {
   details?: any;
@@ -18,6 +19,7 @@ const RequestDetailsForm: React.FC<RequestDetailsFormProps> = ({ details }) => {
           onChange={() => {}}
           name={details?.departmentName}
           label={"Department Name"}
+          disabled={true}
         />
         <Input
           type="text"
@@ -25,6 +27,7 @@ const RequestDetailsForm: React.FC<RequestDetailsFormProps> = ({ details }) => {
           onChange={() => {}}
           name={details?.name}
           label={"Approver Name"}
+          disabled={true}
         />
       </div>
       <div className="form-section__content">
@@ -36,11 +39,17 @@ const RequestDetailsForm: React.FC<RequestDetailsFormProps> = ({ details }) => {
           label={"Status"}
           disabled={true}
         />
-        <Datepicker label="Date" value="" onChange={() => {}} />
+        <Datepicker
+          label="Date"
+          // value={String(moment(details?.dueDate).format("yyyy-dd-mm"))}
+          value={String(details?.dueDate)}
+          onChange={() => {}}
+          disabled={true}
+        />
       </div>
       <div className="form-section__footer">
-        <Button label="Approve" />
-        <Button label="Edit" />
+        <Button disabled={true} label="Approve" />
+        <Button disabled={true} label="Edit" />
       </div>
     </div>
   );

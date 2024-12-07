@@ -26,21 +26,26 @@ const SideBarMenu: React.FC<SideBarMenuProps> = ({ collapsed = false }) => {
         </li>
         <li className="sidebar-menu__item">
           <Link
-            to={"/"}
+            to={"/dashboard"}
             onClick={() => dispatch(hideRightSidebar(false))}
             className="active"
           >
-            <Home stokeColor="#f5f5ef" fill="#004aad" />
+            <Home stokeColor="#f5f5ef" fill="transparent" />
           </Link>
         </li>
         <li className="sidebar-menu__item">
-          <Link to={"/"}>
+          <Link to={"/dashboard"}>
             <Dollar />
           </Link>
         </li>
         <li className="sidebar-menu__item">
-          <Link to={"/"}>
+          <Link to={"/dashboard"}>
             <Graph />
+          </Link>
+        </li>
+        <li className="sidebar-menu__item">
+          <Link to={"/dashboard/vendorForm"} onClick={() => {}}>
+            Vendor Form
           </Link>
         </li>
       </ul>

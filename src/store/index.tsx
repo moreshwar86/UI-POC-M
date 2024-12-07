@@ -6,6 +6,8 @@ import { summaryReducer } from "./summary";
 import { todoListReducer } from "./todoList";
 import { myRequestsReducer } from "./myRequests";
 import { workflowReducer } from "./workflow";
+import { vendorReducer } from "./vendor";
+import { loginReducer } from "./login";
 
 export const rootReducer = combineReducers({
     searchbar: searchbarReducer,
@@ -13,6 +15,8 @@ export const rootReducer = combineReducers({
     todoListData: todoListReducer,
     myRequests: myRequestsReducer,
     workflowData: workflowReducer,
+    vendorForm: vendorReducer,
+    loginDetails: loginReducer,
   }),
   store = createStore(rootReducer, {}, applyMiddleware(thunk as any));
 

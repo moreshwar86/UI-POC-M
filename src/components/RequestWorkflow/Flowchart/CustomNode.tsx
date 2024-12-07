@@ -3,10 +3,12 @@ import React from "react";
 import { Handle, Position } from "react-flow-renderer";
 import Pending from "../../../assets/icons/Pending";
 import CompletedIcon from "../../../assets/icons/CompletedIcon";
-import ReadyForApproval from "../../../assets/icons/ReadyForApproval";
 import "./CustomNode.scss";
 import UserIcon from "../../../assets/icons/user";
 import { DateIcon } from "../../../assets/icons/Date";
+import OverDueIcon from "../../../assets/icons/OverDueIcon";
+import NotStartedIcon from "../../../assets/icons/NotStartedIcon";
+import ReadyToStart from "../../../assets/icons/ReadyToStart";
 
 const CustomNode = ({
   data: { dueDate, departmentName, status, requestName, name },
@@ -25,8 +27,14 @@ const CustomNode = ({
         return <Pending />;
       case "completed":
         return <CompletedIcon />;
-      case "readyforapproval":
-        return <ReadyForApproval />;
+      // case "readyforapproval":
+      //   return <ReadyForApproval />;
+      case "readytostart":
+        return <ReadyToStart />;
+      case "overdue":
+        return <OverDueIcon />;
+      case "notstarted":
+        return <NotStartedIcon />;
       default:
         return null;
     }
@@ -35,9 +43,10 @@ const CustomNode = ({
   return (
     <div className="custom-node__container">
       <div className="status">
-        {getStatusIcon()} - {status}
+        {getStatusIcon()}
+        <p>{status}</p>
       </div>
-      <p className="approver">{departmentName} Review</p>
+      <p className="approver">{departmentName}</p>
       <div className="detail__container">
         <UserIcon />
         <p className="value">{name}</p>
@@ -46,17 +55,15 @@ const CustomNode = ({
         <DateIcon />
         <p className="value">{dueDate}</p>
       </div>
-
-      <Handle
-        type="target"
-        position={Position.Left}
-        style={{ background: "#555" }}
-      />
-
       <Handle
         type="source"
         position={Position.Right}
-        style={{ background: "#555" }}
+        style={{ background: "white", height: "0px" }}
+      />
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ background: "white", height: "0px" }}
       />
     </div>
   );

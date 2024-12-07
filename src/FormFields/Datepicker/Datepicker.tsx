@@ -26,7 +26,7 @@ const Datepicker: React.FC<DatepickerProps> = ({
   maxDate,
   minDate,
 }) => {
-  console.log("Datepicker component rendered", minDate, maxDate);
+  console.log("Datepicker component rendered", value);
   return (
     <div className={`datepicker-group datepicker-group-${labelPosition}`}>
       {label && (

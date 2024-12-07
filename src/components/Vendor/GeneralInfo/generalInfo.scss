@@ -1,0 +1,8 @@
+@use "../../../styles/global.scss" as *;
+
+.general-info-form {
+  //   @include setFlexProperty(column, center, center, 10px);
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+}

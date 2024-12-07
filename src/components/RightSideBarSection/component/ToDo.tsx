@@ -5,6 +5,7 @@ import CardIcon from "../../../assets/icons/CardIcon";
 import RenewIcon from "../../../assets/icons/RenewIcon";
 import PRApprovalIcon from "../../../assets/icons/PRApprovalIcon";
 import TodoIcon from "../../../assets/icons/TodoIcon";
+import OverDueIcon from "../../../assets/icons/OverDueIcon";
 
 interface TodoProps {
   title?: string;
@@ -15,7 +16,7 @@ interface TodoProps {
 const Todo: React.FC<TodoProps> = ({ title = "ToDo's", content, showHide }) => {
   const getIcon = (type: any) => {
     if (type?.includes("Overdue")) {
-      return <Pending />;
+      return <OverDueIcon />;
     } else if (type?.includes("Approval")) {
       return <PRApprovalIcon />;
     } else if (type?.includes("Renewal")) {

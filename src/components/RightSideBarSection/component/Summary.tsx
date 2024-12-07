@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Summary.scss";
 import SummaryIcon from "../../../assets/icons/SummaryIcon";
 import { useSelector } from "react-redux";
@@ -18,14 +18,26 @@ const Summary: React.FC<SummaryProps> = ({ title = "Summary", showHide }) => {
     searchbar: { rightSidebarHidden, chatDetails },
   } = stateData;
   // State to track how many items to display
-  const [visibleCount, setVisibleCount] = useState(5);
+  const [showMoreItems, setShowMoreItems] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(2);
 
-  // Function to show more items
   const showMore = () => {
-    setVisibleCount(chatDetails.length); // Show all items
+    if (showMoreItems) {
+      setVisibleCount(chatDetails.length);
+      setShowMoreItems(false);
+    } else {
+      setVisibleCount(2);
+      setShowMoreItems(true);
+    }
   };
-  console.log("chatDetails", chatDetails);
 
+  console.log("chatDetails", chatDetails);
+  useEffect(() => {
+    if (chatDetails && chatDetails.length > 2 && !showMoreItems)
+      setShowMoreItems(true);
+  }, [chatDetails]);
+
+  console.log(showMoreItems, visibleCount);
   return (
     <div className="summary">
       <p className="summary__title">
@@ -35,20 +47,23 @@ const Summary: React.FC<SummaryProps> = ({ title = "Summary", showHide }) => {
       {!showHide && (
         <>
           <ul className="summary__content">
-            {chatDetails ? (
+            {chatDetails && chatDetails.length > 0 ? (
               chatDetails
                 ?.slice(0, visibleCount)
+                ?.reverse()
                 .map((item: { id: string; question: string }) => (
                   <li className="summary__content__item" key={item?.id}>
                     <p className="item">{item?.question}</p>
                   </li>
                 ))
             ) : (
-              <p>No summary found</p>
+              <p className="alert-msg">No summary</p>
             )}
           </ul>
-          {visibleCount < chatDetails.length && (
-            <button onClick={showMore}>Show More</button>
+          {chatDetails.length > 2 && (
+            <a className="link" onClick={() => showMore()}>
+              {showMoreItems ? "Show More" : "show less"}
+            </a>
           )}
         </>
       )}

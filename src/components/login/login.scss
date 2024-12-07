@@ -1,0 +1,105 @@
+@use "../../styles/global.scss" as *;
+
+.login-container {
+  @include setFlexProperty(column, center, center, 10px);
+  height: 100vh;
+  background: #2368c4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+  &__logo {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%; /* the magic */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    text-align: center;
+    color: $secondary-color;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #15437f;
+    padding: 10px;
+  }
+
+  .login-form-container {
+    @include setFlexProperty(column, center, center, 10px);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+
+    .login-form {
+      @include setFlexProperty(column, center, center, 10px);
+      background-color: white;
+      padding: 2rem;
+
+      width: 70%;
+      max-width: 400px;
+    }
+
+    // &__input {
+    //   width: calc(100% - 16px);
+    //   padding: 10px 8px;
+    //   border: 1px solid $lighter-blue;
+    //   border-radius: $border-radius;
+    //   font-size: 16px;
+    //   outline: none;
+    //   transition: border-color 0.3s ease;
+
+    //   &:focus {
+    //     border-color: #4a90e2;
+    //     box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+    //   }
+
+    //   &::placeholder {
+    //     color: #999;
+    //   }
+    // }
+
+    // .submit-button {
+    //   margin-top: 20px;
+    //   height: 35px;
+    //   width: 100%;
+    //   padding: 0.75rem;
+    //   background-color: #007bff;
+    //   color: white;
+    //   border: none;
+    //   border-radius: 8px;
+    //   font-size: 1rem;
+    //   cursor: pointer;
+    //   transition: background-color 0.2s;
+
+    //   &:hover {
+    //     background-color: #0056b3;
+    //   }
+
+    //   &:disabled {
+    //     background-color: #ccc;
+    //     cursor: not-allowed;
+    //   }
+    // }
+
+    // .error-message {
+    //   color: #dc3545;
+    //   font-size: 0.875rem;
+    //   margin-top: 0.5rem;
+    // }
+
+    // .forgot-password {
+    //   text-align: center;
+    //   margin-top: 1rem;
+
+    //   a {
+    //     color: #007bff;
+    //     text-decoration: none;
+
+    //     &:hover {
+    //       text-decoration: underline;
+    //     }
+    //   }
+    // }
+  }
+}

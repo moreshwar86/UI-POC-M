@@ -178,39 +178,40 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       }`}
     >
       {!(chatDetails?.length > 0) && !selectedSuggestion && (
-        <p className="search-bar__title">Hi User! Welcome to Maestro</p>
+        <p className="search-bar__title">Hi John! Welcome to Maestro</p>
       )}
-      <div className={"chat-main-container"}>
-        {chatDetails &&
-          chatDetails?.map((chat: any, index: number) => (
-            <div key={index} className="chat-container">
-              <div
-                key={index}
-                className="chat-container__question"
-                ref={(el) => (questionRef.current[index] = el)}
-              >
-                <p className="helper-text">You</p>
-                <p className="text">{chat.question}</p>
-              </div>
-              {chat.loading ? (
-                <div className="chat-container__answer">
-                  <p className="helper-text">Assistance</p>
-                  <div className="text-container">
-                    <Loader />
-                  </div>
-                </div>
-              ) : (
+      <div className="chat__wrapper">
+        <div className={"chat-main-container"}>
+          {chatDetails &&
+            chatDetails?.map((chat: any, index: number) => (
+              <div key={index} className="chat-container">
                 <div
-                  className="chat-container__answer"
-                  ref={(el) => (answerRef.current[index] = el)}
+                  key={index}
+                  className="chat-container__question"
+                  ref={(el) => (questionRef.current[index] = el)}
                 >
-                  <p className="helper-text">Assistance</p>
-                  <div className="text-container">
-                    <div className="icon">M</div>
-                    <div className="text">
-                      <Markdown>{chat.answer}</Markdown>
+                  {/* <p className="helper-text">John</p> */}
+                  <p className="text">{chat.question}</p>
+                </div>
+                {chat.loading ? (
+                  <div className="chat-container__answer">
+                    {/* <p className="helper-text">Assistance</p> */}
+                    <div className="loader-container">
+                      <Loader />
                     </div>
-                    {/* <p
+                  </div>
+                ) : (
+                  <div
+                    className="chat-container__answer"
+                    ref={(el) => (answerRef.current[index] = el)}
+                  >
+                    {/* <p className="helper-text">Assistance</p> */}
+                    <div className="text-container">
+                      <div className="icon">M</div>
+                      <div className="text">
+                        <Markdown>{chat.answer}</Markdown>
+                      </div>
+                      {/* <p
                       className="text"
                       dangerouslySetInnerHTML={{
                         __html: chat.answer
@@ -218,46 +219,48 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                           ?.replaceAll("#", ""),
                       }}
                     /> */}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
-        {/* {selectedSuggestion === "Raise PR" && (
+                )}
+              </div>
+            ))}
+          {/* {selectedSuggestion === "Raise PR" && (
           <div className="chat-container">
             <RequestPrForm />
           </div>
         )} */}
-      </div>
-      <div className="search-bar">
-        <ArrowUpWithCircle
-          className={`search-bar__icon`}
-          fill={searchTerm ? "white" : "lightgray"}
-          // ${isBottom ? "rotated" : ""}
-          onClick={handleClick}
-          style={{
-            cursor: searchTerm ? "pointer" : "not-allowed",
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Message Maestro"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="search-bar__input"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleClick();
-            }
-          }}
-        />
-      </div>
-      {/* {!(chatDetails?.length > 0) && !selectedSuggestion && (
-        <div className="search-bar-container__suggestion">
+        </div>
+        <div className="search-bar">
+          <ArrowUpWithCircle
+            className={`search-bar__icon`}
+            fill={searchTerm ? "white" : "lightgray"}
+            // ${isBottom ? "rotated" : ""}
+            onClick={handleClick}
+            style={{
+              cursor: searchTerm ? "pointer" : "not-allowed",
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Message Maestro"
+            value={searchTerm}
+            onChange={handleSearch}
+            className="search-bar__input"
+            disabled={loading}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleClick();
+              }
+            }}
+          />
+        </div>
+
+        {/* {!(chatDetails?.length > 0) && !selectedSuggestion && (
+        <div className="suggestion">
           {suggestionsList?.map((suggestion: any, index: number) => (
             <div
               key={index}
-              className="search-bar-container__suggestion__item"
+              className="suggestion__item"
               onClick={() => handleSuggestionClick(suggestion?.suggestionText)}
             >
               {suggestion?.suggestionText}
@@ -265,6 +268,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           ))}
         </div>
       )} */}
+      </div>
     </div>
   );
 };

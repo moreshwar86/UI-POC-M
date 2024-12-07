@@ -33,6 +33,155 @@ const RequestWorkflow: React.FC = () => {
 
   console.log("workflowData", workflowData);
 
+  let laptopReqData = [
+    {
+      departmentName: "Manager Review",
+      name: "John Doe",
+      date: "2024-15-11",
+      status: "Completed",
+      RequestType: "Laptop Request",
+      source: "1",
+      target: "2",
+      x: 0,
+      y: 200,
+    },
+    {
+      departmentName: "IT Review",
+      name: "Nathon lincon",
+      date: "2024-17-11",
+      status: "Completed",
+      RequestType: "Laptop Request",
+      source: "2",
+      target: "3",
+      x: 250,
+      y: 200,
+    },
+    {
+      departmentName: "HR review",
+      name: "Johnny Depp",
+      date: "2024-17-11",
+      status: "Overdue",
+      RequestType: "Laptop Request",
+      source: "3",
+      target: "4",
+      x: 500,
+      y: 200,
+    },
+    {
+      departmentName: "Create PR",
+      name: "Mark russell",
+      date: "2024-01-12",
+      status: "Pending",
+      RequestType: "Laptop Request",
+      source: "4",
+      target: "5",
+      x: 750,
+      y: 200,
+    },
+  ];
+
+  let renewlReqData = [
+    {
+      departmentName: "Procurement review",
+      name: "John Doe",
+      date: "2024-15-11",
+      status: "Completed",
+      RequestType: "Laptop Request",
+      source: "1",
+      target: "2",
+      x: 0,
+      y: 200,
+    },
+    {
+      departmentName: "Third party risk review",
+      name: "Nathon lincon",
+      date: "2024-17-11",
+      status: "Completed",
+      RequestType: "Laptop Request",
+      source: "1",
+      target: "3",
+      x: 250,
+      y: 0,
+    },
+    {
+      departmentName: "Security review",
+      name: "Johnny Depp",
+      date: "2024-17-11",
+      status: "Overdue",
+      RequestType: "Laptop Request",
+      source: "1",
+      target: "4",
+      x: 250,
+      y: 200,
+    },
+    {
+      departmentName: "Legal review",
+      name: "Mark russell",
+      date: "2024-01-12",
+      status: "Pending",
+      RequestType: "Laptop Request",
+      source: "2",
+      target: "5",
+      x: 250,
+      y: 400,
+    },
+    {
+      departmentName: "Vendor onboarding",
+      name: "Albert Snowman",
+      date: "2024-03-12",
+      status: "Ready to start",
+      RequestType: "Laptop Request",
+      source: "3",
+      target: "5",
+      x: 500,
+      y: 100,
+    },
+    {
+      departmentName: "Contract execution",
+      name: "Albert Snowman",
+      date: "2023-05-12",
+      status: "Ready to start",
+      RequestType: "Laptop Request",
+      source: "3",
+      target: "6",
+      x: 500,
+      y: 300,
+    },
+    {
+      departmentName: "Contract execution",
+      name: "Albert Snowman",
+      date: "2023-05-12",
+      status: "Ready to start",
+      RequestType: "Laptop Request",
+      source: "4",
+      target: "6",
+      x: 500,
+      y: 300,
+    },
+    {
+      departmentName: "Create PR",
+      name: "Albert Snowman",
+      date: "2023-07-12",
+      status: "Not started",
+      RequestType: "Laptop Request",
+      source: "5",
+      target: "8",
+      x: 750,
+      y: 200,
+    },
+    {
+      departmentName: "Create PR",
+      name: "Albert Snowman",
+      date: "2023-07-12",
+      status: "Not started",
+      RequestType: "Laptop Request",
+      source: "7",
+      target: "8",
+      x: 750,
+      y: 200,
+    },
+  ];
+
   return (
     <>
       <div
@@ -45,7 +194,10 @@ const RequestWorkflow: React.FC = () => {
             <div className="request-workflow__title">
               {currentRequest.RequestId} - {currentRequest.RequestType}
             </div>
-            <FlowChart reqDetails={workflowData?.workflowDeatils} />
+            {/* <FlowChart reqDetails={workflowData?.workflowDeatils} /> */}
+            <FlowChart
+              reqDetails={id == "ID12434" ? laptopReqData : renewlReqData}
+            />
           </>
         )}
       </div>

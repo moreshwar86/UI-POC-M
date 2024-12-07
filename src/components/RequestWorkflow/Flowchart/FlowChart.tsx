@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import ReactFlow, { Background, Controls } from "react-flow-renderer";
+import ReactFlow, {
+  Background,
+  Controls,
+  MarkerType,
+} from "react-flow-renderer";
 import CustomNode from "./CustomNode";
 import "react-flow-renderer/dist/style.css";
 import ModalPopup from "../../../FormFields/ModalPopup/ModalPopup";
@@ -21,8 +25,10 @@ const FlowChart = ({ reqDetails }: { reqDetails: any }) => {
         name: item.name,
       },
       position: {
-        x: 250 * (index + 2),
-        y: Number(item.source) !== index + 1 ? 200 * index : 200,
+        // x: 250 * (index + 2),
+        // y: Number(item.source) !== index + 1 ? 200 * index : 200,
+        x: item.x,
+        y: item.y,
         //y: index === 2 ? 0 : index === 3 ? 200 : 0,
       },
       // style: { width: 150, height: 50 },
@@ -39,6 +45,12 @@ const FlowChart = ({ reqDetails }: { reqDetails: any }) => {
       target: item.target,
       type: "smoothstep",
       style: { stroke: "#000" },
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        width: 20,
+        height: 20,
+        color: "black",
+      },
     });
   });
 

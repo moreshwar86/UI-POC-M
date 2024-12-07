@@ -10,6 +10,8 @@ import { hideRightSidebar } from "../../store/searchbar";
 import { fetchSummaryDetails } from "../../store/summary/api";
 import { fetchTodoList } from "../../store/todoList/api";
 import { fetchMyRequestsList } from "../../store/myRequests/api";
+import UserIcon from "../../assets/icons/user";
+import UserProfileIcon from "../../assets/icons/UserProfileIcon";
 
 interface RightSideBarSectionProps {
   children?: React.ReactNode;
@@ -24,8 +26,9 @@ const RightSideBarSection: React.FC<RightSideBarSectionProps> = () => {
     todoListData,
     myRequests,
     searchbar: { rightSidebarHidden, chatDetails },
+    loginDetails: { userDetails },
   } = stateData;
-
+  console.log("login", userDetails);
   const [showHide, setShowHide] = React.useState(false);
 
   const fetchDetails = async () => {
@@ -50,17 +53,41 @@ const RightSideBarSection: React.FC<RightSideBarSectionProps> = () => {
           : "right-side-bar-section__widthDiv"
       }`}
     >
-      {!showHide ? (
+      <div
+        className="user-profile"
+        // onClick={() => dispatch(hideRightSidebar(!rightSidebarHidden))}
+      >
+        <div className="user-profile__details">
+          <UserProfileIcon className="user-icon" />
+
+          <div>
+            <p>{userDetails?.username}</p>
+            {!showHide && <span>{userDetails?.role}</span>}
+          </div>
+        </div>
+        {!showHide ? (
+          <ArrowRight
+            onclick={() => dispatch(hideRightSidebar(!rightSidebarHidden))}
+            style={{ cursor: "pointer" }}
+          />
+        ) : (
+          <ArrowLeft
+            onclick={() => dispatch(hideRightSidebar(!rightSidebarHidden))}
+            style={{ cursor: "pointer" }}
+          />
+        )}
+      </div>
+      {/* {!showHide ? (
         <ArrowRight
           onclick={() => dispatch(hideRightSidebar(!rightSidebarHidden))}
-          style={{ cursor: "pointer", marginTop: "10px" }}
+          style={{ cursor: "pointer" }}
         />
       ) : (
         <ArrowLeft
           onclick={() => dispatch(hideRightSidebar(!rightSidebarHidden))}
-          style={{ cursor: "pointer", marginTop: "10px" }}
+          style={{ cursor: "pointer" }}
         />
-      )}
+      )} */}
       <Summary showHide={rightSidebarHidden} />
       <Todo showHide={rightSidebarHidden} content={todoListData?.todoList} />
       <YourRequests
@@ -70,5 +97,4 @@ const RightSideBarSection: React.FC<RightSideBarSectionProps> = () => {
     </div>
   );
 };
-
 export default RightSideBarSection;

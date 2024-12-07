@@ -6,27 +6,38 @@ import RequestWorkflow from "../components/RequestWorkflow/RequestWorkflow";
 import RequestDetailsForm from "../components/RequestWorkflow/RequestDetailsForm/RequestDetailsForm";
 // import FileEditor from "../components/FIleEditor/FileEditor";
 import RequestPrForm from "../components/RequestWorkflow/RequestPrForm/RequestPrForm";
+import Login from "../components/login/Login";
+import VendorForm from "../components/Vendor/VendorForm";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/dashboard",
     element: <App />,
+    // element: <VendorForm />,
     children: [
       {
-        path: "/",
+        path: "/dashboard",
         element: <SearchBar />,
       },
       {
-        path: "/my-requests/:id",
+        path: "/dashboard/my-requests/:id",
         element: <RequestWorkflow />,
       },
       {
-        path: "/request-details",
+        path: "/dashboard/request-details",
         element: <RequestDetailsForm />,
       },
       {
-        path: "/pr",
+        path: "/dashboard/pr",
         element: <RequestPrForm />,
+      },
+      {
+        path: "/dashboard/vendorForm",
+        element: <VendorForm />,
       },
     ],
   },

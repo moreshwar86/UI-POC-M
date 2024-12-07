@@ -27,5 +27,14 @@
     .item {
       @include typography-s-normal();
     }
+    .alert-msg {
+      @include typography-s-normal();
+    }
+  }
+  .link {
+    @include typography-s-normal();
+    color: $primary-color;
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

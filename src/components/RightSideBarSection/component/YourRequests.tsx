@@ -24,7 +24,7 @@ const YourRequests: React.FC<YourRequestsProps> = ({
         <div className="your-requests__content">
           {content?.map((item: any, index: any) => (
             <Link
-              to={`/my-requests/${item?.RequestId}`}
+              to={`/dashboard/my-requests/${item?.RequestId}`}
               className="item"
               key={index}
             >

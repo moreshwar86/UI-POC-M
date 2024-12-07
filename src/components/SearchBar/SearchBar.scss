@@ -1,6 +1,6 @@
 @use "../../styles/global" as *;
 .search-bar-container {
-  @include setFlexProperty(column, center, center, 10px);
+  @include setFlexProperty(column, center, center, 20px);
   width: calc(100% - ($sidebar-width + $right-sidebar-width));
   padding: 10px;
   box-sizing: border-box;
@@ -24,129 +24,134 @@
     // right: inherit;
     // transform: translate(-50%, -50%);
   }
+  .chat__wrapper {
+    width: 75%;
+    @include setFlexProperty(column, center, center, 15px);
+    .search-bar {
+      position: relative;
+      width: 97%; // removed width of M logo
+      margin-left: auto;
 
-  .search-bar {
-    position: relative;
-    width: 50vw;
+      &__title {
+        @include typography-l-bold();
+        // border-right: 4px solid black;
+        white-space: nowrap;
+        overflow: hidden;
+      }
 
-    &__title {
-      @include typography-l-bold();
-      // border-right: 4px solid black;
-      white-space: nowrap;
-      overflow: hidden;
+      &__input {
+        width: calc(100% - 16px);
+        padding: 10px 8px;
+        border: 2px solid $lighter-blue;
+        border-radius: $border-radius;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: #4a90e2;
+          box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+
+      &__icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        // cursor: pointer;
+        font-size: 18px;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          color: #4a90e2;
+        }
+
+        &.rotated {
+          transform: rotate(180deg);
+          top: 30%;
+          right: 10px;
+        }
+      }
     }
-
-    &__input {
+    .suggestion {
+      @include setFlexProperty(row, center, flex-start, 10px);
+      margin-top: 10px;
+      &__item {
+        border: $light-blue 1px solid;
+        padding: 5px 10px;
+        // max-width: 100px;
+        border-radius: 5px;
+        cursor: pointer;
+        // background: $light-blue;
+        color: black;
+      }
+    }
+    .chat-main-container {
+      max-height: 90vh;
+      overflow-y: auto;
       width: 100%;
-      padding: 10px 8px;
-      border: 2px solid $lighter-blue;
-      border-radius: $border-radius;
-      font-size: 16px;
-      outline: none;
-      transition: border-color 0.3s ease;
+      // @include setFlexProperty(column, center, flex-start, 10px);
+      .chat-container {
+        @include setFlexProperty(column, center, flex-start, 15px);
+        // margin-top: 10px;
+        width: 100%;
 
-      &:focus {
-        border-color: #4a90e2;
-        box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
-      }
-
-      &::placeholder {
-        color: #999;
-      }
-    }
-
-    &__icon {
-      position: absolute;
-      right: 0px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #666;
-      // cursor: pointer;
-      font-size: 18px;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        color: #4a90e2;
-      }
-
-      &.rotated {
-        transform: rotate(180deg);
-        top: 30%;
-        right: 10px;
-      }
-    }
-  }
-  &__suggestion {
-    @include setFlexProperty(row, center, flex-start, 10px);
-    margin-top: 10px;
-    &__item {
-      border: $light-blue 1px solid;
-      padding: 5px 10px;
-      // max-width: 100px;
-      border-radius: 5px;
-      cursor: pointer;
-      // background: $light-blue;
-      color: black;
-    }
-  }
-  .chat-main-container {
-    max-height: 90vh;
-    overflow-y: auto;
-    width: 50vw;
-    padding: 10px;
-    // @include setFlexProperty(column, center, flex-start, 10px);
-
-    .chat-container {
-      @include setFlexProperty(column, center, flex-start, 10px);
-      // margin-top: 10px;
-      width: 100%;
-
-      .chat-container__question {
-        max-width: 80%;
-        margin-left: auto;
-        .helper-text {
-          @include typography-s-normal();
-          @include setFlexProperty(row, flex-end, center, 5px);
-          margin-bottom: 4px;
-        }
-        .text {
-          @include typography-s-normal();
-          margin: 0;
-          text-align: left;
-          background-color: $light-blue;
-          color: $WHITE;
-          padding: 6px 12px;
-          border-radius: 8px 0 8px 8px;
-        }
-      }
-      .chat-container__answer {
-        max-width: 80%;
-        .helper-text {
-          @include typography-s-normal();
-          @include setFlexProperty(row, flex-start, center, 5px);
-          margin-bottom: 4px;
-        }
-        .text-container {
-          @include setFlexProperty(row, flex-start, flex-start, 5px);
-          border: 1px solid $lighter-blue;
-          border-radius: 0 8px 8px 8px;
-          padding: 6px 12px;
-          .icon {
-            width: 10px;
-            height: 10px;
-            line-height: 10px;
-            border-radius: 50%;
-            -moz-border-radius: 50%;
-            -webkit-border-radius: 50%;
-            text-align: center;
-            color: $secondary-color;
-            font-size: 10px;
-            text-transform: uppercase;
-            background-color: $light-blue;
-            padding: 5px;
+        .chat-container__question {
+          max-width: 80%;
+          margin-left: auto;
+          .helper-text {
+            @include typography-s-normal();
+            @include setFlexProperty(row, flex-end, center, 5px);
+            margin-bottom: 4px;
           }
           .text {
             @include typography-s-normal();
+            margin: 0;
+            text-align: left;
+            background-color: $light-blue;
+            color: $WHITE;
+            padding: 6px 12px;
+            border-radius: 8px 0 8px 8px;
+          }
+        }
+        .chat-container__answer {
+          .helper-text {
+            @include typography-s-normal();
+            @include setFlexProperty(row, flex-start, center, 5px);
+            margin-bottom: 4px;
+          }
+          .loader-container {
+            padding: 6px 12px;
+            margin-left: 20px;
+          }
+          .text-container {
+            @include setFlexProperty(row, flex-start, flex-start, 5px);
+            // border: 1px solid $lighter-blue;
+            // border-radius: 0 8px 8px 8px;
+            padding: 6px 0px;
+            .icon {
+              width: 10px;
+              height: 10px;
+              line-height: 10px;
+              border-radius: 50%;
+              -moz-border-radius: 50%;
+              -webkit-border-radius: 50%;
+              text-align: center;
+              color: $secondary-color;
+              font-size: 10px;
+              text-transform: uppercase;
+              background-color: $light-blue;
+              padding: 5px;
+            }
+            .text {
+              @include typography-s-normal();
+            }
           }
         }
       }
